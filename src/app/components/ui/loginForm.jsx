@@ -13,6 +13,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -49,48 +50,49 @@ const LoginForm = () => {
   const handleBack = () => {
     navigate(-1);
   };
-  const validatorConfig = {
-    email: {
-      isRequired: {
-        message: "Электронная почта обязательна для заполнения",
+
+  const validate = useCallback(() => {
+    const validatorConfig = {
+      email: {
+        isRequired: {
+          message: "Электронная почта обязательна для заполнения",
+        },
+        isEmail: {
+          message: "Email введен некорректно",
+        },
       },
-      isEmail: {
-        message: "Email введен некорректно",
+      name: {
+        isRequired: {
+          message: "Имя обязательно для заполнения",
+        },
+        min: {
+          message: "Имя должно состоять минимум из 3 символов",
+          value: 3,
+        },
       },
-    },
-    name: {
-      isRequired: {
-        message: "Имя обязательно для заполнения",
+      password: {
+        isRequired: {
+          message: "Пароль обязателен для заполнения",
+        },
+        isCapitalSymbol: {
+          message: "Пароль должен содержать хотя бы одну заглавную букву",
+        },
+        isContainDigit: {
+          message: "Пароль должен содержать хотя бы одно число",
+        },
+        min: {
+          message: "Пароль должен состоять минимум из 8 символов",
+          value: 8,
+        },
       },
-      min: {
-        message: "Имя должно состоять минимум из 3 символов",
-        value: 3,
-      },
-    },
-    password: {
-      isRequired: {
-        message: "Пароль обязателен для заполнения",
-      },
-      isCapitalSymbol: {
-        message: "Пароль должен содержать хотя бы одну заглавную букву",
-      },
-      isContainDigit: {
-        message: "Пароль должен содержать хотя бы одно число",
-      },
-      min: {
-        message: "Пароль должен состоять минимум из 8 символов",
-        value: 8,
-      },
-    },
-  };
-  useEffect(() => {
-    validate();
-  }, [data]);
-  const validate = () => {
+    };
     const errors = validator(data, validatorConfig);
     setErrors(errors);
     return Object.keys(errors).length === 0;
-  };
+  }, [data]);
+  useEffect(() => {
+    validate();
+  }, [data, validate]);
   const isValid = Object.keys(errors).length === 0;
 
   const handleSubmit = (e) => {
