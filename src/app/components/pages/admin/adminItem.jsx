@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteSign } from "../../../../store/signs";
 import * as signsImage from "../../../assets/img/signs/worning";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AdminItem = ({ row, index, onDelete }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
