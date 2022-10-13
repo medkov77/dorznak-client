@@ -1,4 +1,4 @@
 {
-    "apiEndpoint": "https://dorznak.herokuapp.com/с",
+    "apiEndpoint": "https://dorznak.herokuapp.com/api/",
     "limit": 6
 }
