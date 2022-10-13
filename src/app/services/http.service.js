@@ -36,13 +36,7 @@ http.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-function transformData(data) {
-  return data && !data._id
-    ? Object.keys(data).map((key) => ({
-        ...data[key],
-      }))
-    : data;
-}
+
 http.interceptors.response.use(
   (res) => {
     res.data = { content: res.data };

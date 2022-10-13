@@ -4,7 +4,6 @@ import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import PropTypes from "prop-types";
-import { minWidth } from "@mui/system";
 
 const SelectedField = ({ items, onSelect, name, label, value }) => {
   const handleChange = (event) => {

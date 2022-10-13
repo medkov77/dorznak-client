@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../../../../store/users";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -10,16 +10,11 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Button from "@mui/material/Button";
-import {
-  getSignsList,
-  loadSigns,
-  getSignsLoadingStatus,
-} from "../../../../store/signs";
+import { getSignsList } from "../../../../store/signs";
 import AdminItem from "./adminItem";
 import Loader from "../../common/table/loader";
 import { useNavigate } from "react-router-dom";
 const AdminPage = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(getIsLoggedIn());
   const [signsList, setSignList] = useState([]);

@@ -12,7 +12,7 @@ import SelectUnstyled from "@mui/base/SelectUnstyled";
 import OptionUnstyled from "@mui/base/OptionUnstyled";
 
 import SelectedField from "../../common/table/selectedUFeld";
-const EditSign = ({}) => {
+const EditSign = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let signsList = useSelector(getSignsList());
